@@ -1,0 +1,1172 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Zorgt voor het zachte/soepele scroll-effect bij op een knop klikken */
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    background-color: #000000;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollen weer inschakelen op 1 pagina */
+}
+
+/* Analoge ruis filter over het scherm */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.2'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 99;
+    mix-blend-mode: overlay;
+}
+
+/* --- NAVIGATIE RECHTSBOVEN (FIXED) --- */
+/* --- NAVIGATIE RECHTSBOVEN (FIXED) --- */
+.top-nav {
+    position: fixed;
+    top: 2rem;
+    right: 2.5rem;
+    z-index: 100;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;                 /* Ultra vet (Black) */
+    font-size: 0.9rem;                /* Strakke grootte */
+    letter-spacing: 0.05em;           /* Zelfde spatiëring als de subtitel */
+    text-transform: uppercase;        /* Alles in hoofdletters */
+    color: #25FF00;                   /* Gifgroen */
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    
+    /* SCHADUW HIER AANGEPAST VOOR EEN ZACHTER EFFECT */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.nav-item:hover {
+    opacity: 0.7;
+    transform: translateY(-1px);
+}
+
+/* --- 1. HERO / HOME SECTIE --- */
+.hero-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh; /* Vult exact 1 scherm */
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: contrast(130%) brightness(85%) grayscale(100%);
+}
+
+.text-group {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    padding: 0 1rem;
+    z-index: 10;
+}
+
+.graffiti-title {
+    font-family: 'Reenie Beanie', 'Ink Free', 'Caveat', cursive, sans-serif;
+    font-weight: 400;
+    color: #25FF00;
+    font-size: clamp(3.5rem, 8.5vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
+    margin-bottom: 0.8rem;
+}
+
+.sub-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    color: #25FF00;
+    font-size: clamp(0.75rem, 1.2vw, 1.05rem);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+}
+
+/* --- 2. WORK SECTIE --- */
+/* --- 2. WORK SECTIE (Magazine / Editorial Style) --- */
+.work-section {
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #FFFFFF; /* Witte achtergrond voor magazine look */
+    color: #000000;
+    padding: 8rem 3rem 6rem 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.journal-container {
+    width: 100%;
+    max-width: 1350px;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* HEADER: TITELS & CATEGORIEËN */
+.journal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 2rem;
+}
+
+.journal-title-stack h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #000000;
+}
+
+.journal-title-stack .dash {
+    font-weight: 400;
+    margin-right: 0.2rem;
+}
+
+.journal-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: left;
+    padding-top: 0.5rem;
+}
+
+.journal-categories span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    color: #777777;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.journal-categories span:hover,
+.journal-categories .cat-active {
+    color: #000000;
+}
+
+/* JOURNAL GRID (4 KOLOMMEN) */
+.journal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.journal-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-decoration: none;
+    color: #000000;
+}
+
+.journal-card:hover .card-title {
+    text-decoration: underline;
+}
+
+.card-img-wrap {
+    width: 100%;
+    background-color: #F0F0F0;
+    overflow: hidden;
+}
+
+.card-img-wrap img {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.journal-card:hover img {
+    filter: grayscale(0%);
+}
+
+.img-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #E5E5E5;
+}
+
+.card-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+
+.card-excerpt {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    color: #333333;
+}
+
+.card-meta {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #888888;
+    margin-top: auto;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .journal-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .journal-header {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .journal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Vensters / Mappen */
+.folder-window {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    max-width: 100%;
+    background-color: #000000;
+    text-decoration: none;
+    border: 3px solid #000000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+    transition: transform 0.2s ease;
+}
+
+.folder-window:hover {
+    transform: translateY(-5px);
+}
+
+.window-topbar {
+    background-color: #000000;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+.bar-title {
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.bar-right {
+    color: #1A52EB;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.window-img-wrap {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+.window-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%);
+}
+
+/* --- 3. ABOUT ME (50/50 Split Screen Editorial) --- */
+.about-section {
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    background-color: #000000;
+    overflow: hidden;
+}
+
+/* LINKER HELFT: Gifgroen vlak */
+.about-left-block {
+    width: 50%;
+    min-height: 100vh;
+    background-color: #25FF00; /* Fel gifgroen */
+    color: #000000;
+    padding: 6rem 4rem 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border-right: 2px solid #000000;
+}
+
+.about-top-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.about-date {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+
+.about-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.2rem, 3.8vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #000000;
+}
+
+.about-bottom-content {
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.about-body-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    line-height: 1.4;
+    color: #000000;
+}
+
+/* 'Fold' indicator onderaan het groene vlak */
+.about-fold-peek {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.8rem 4rem;
+    background-color: #000000;
+    color: #25FF00;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    border-top: 2px solid #000000;
+}
+
+/* RECHTER HELFT: Schermvullend wit vlak / Foto */
+.about-right-block {
+    width: 50%;
+    min-height: 100vh;
+    background-color: #FFFFFF; /* Het grote witte vlak */
+    position: relative;
+}
+
+.about-img-frame {
+    width: 100%;
+    height: 100%;
+}
+
+.about-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Responsive voor mobiel */
+@media (max-width: 900px) {
+    .about-section {
+        flex-direction: column;
+    }
+    
+    .about-left-block, 
+    .about-right-block {
+        width: 100%;
+        min-height: 60vh;
+    }
+
+    .about-left-block {
+        padding: 5rem 2rem 4rem 2rem;
+    }
+}
+
+/* --- PROJECT SPREAD PAGE (Ren Hang Style) --- */
+.project-page-body {
+    background-color: #111111; /* Donkere achtergrond achter het "boek" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 6rem 2rem 4rem 2rem;
+}
+
+.spread-container {
+    width: 100%;
+    max-width: 1300px;
+    background-color: #FFFFFF; /* Witte pagina's */
+    color: #000000;
+    display: flex;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid #E0E0E0;
+}
+
+/* PAGINA INDELING (50% / 50%) */
+.spread-page {
+    width: 50%;
+    padding: 3rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-page {
+    border-right: 1px solid #E5E5E5; /* De vouw van het boek */
+}
+
+/* TYPOGRAFIE LINKERPAGINA */
+.spread-header {
+    margin-bottom: 2rem;
+}
+
+.spread-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+    letter-spacing: -0.04em;
+    color: #000000;
+    line-height: 0.95;
+}
+
+.spread-text-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: #222222;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid #EEEEEE;
+    padding-bottom: 1.5rem;
+}
+
+.meta-lead {
+    font-weight: 700;
+    color: #000000;
+}
+
+.website-link {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    color: #666666;
+    text-decoration: underline;
+}
+
+/* AFBEELDINGEN STRUCTUUR */
+.spread-img-box {
+    width: 100%;
+    background-color: #F5F5F5;
+    overflow: hidden;
+}
+
+.spread-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%) contrast(110%);
+}
+
+/* Foto's verhoudingen op maat van het origineel */
+.img-left-bottom {
+    height: 380px;
+    margin-top: auto;
+}
+
+.img-right-top {
+    height: 360px;
+    margin-bottom: 2rem;
+}
+
+.right-bottom-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.img-right-bottom-left {
+    height: 320px;
+}
+
+.img-right-bottom-right {
+    height: 250px;
+    margin-top: 2rem;
+}
+
+/* RESPONSIVE VOOR MOBIEL/TABLETS */
+@media (max-width: 900px) {
+    .spread-container {
+        flex-direction: column;
+    }
+    .spread-page {
+        width: 100%;
+        padding: 2rem;
+    }
+    .left-page {
+        border-right: none;
+        border-bottom: 1px solid #E5E5E5;
+    }
+    .right-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- PROJECT SPREAD PAGE (AANGEPASTE LAYOUT) --- */
+
+/* CONTAINER EN STRETCH INSTELLINGEN */
+.spread-container {
+    width: 100%;
+    max-width: 1400px;
+    background-color: #FFFFFF;
+    color: #000000;
+    display: flex;
+    align-items: stretch; /* Zorgt dat beide pagina-helften even lang meerekken */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    border: 1px solid #E0E0E0;
+}
+
+.spread-page {
+    width: 50%;
+    padding: 3.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* RECHTERPAGINA SPECIALE PADDING (Foto hoger geplaatst) */
+.right-page {
+    padding-top: 1.5rem; 
+}
+
+/* AFBEELDINGEN NATUURLIJKE HOOGTE GEVEN */
+.spread-img-box {
+    width: 100%;
+    height: auto; /* Geen vaste hoogtes meer, laat het beeld de hoogte bepalen */
+    background-color: transparent;
+}
+
+.spread-img-box img {
+    width: 100%;
+    height: auto; /* Zorgt dat de verhouding 100% origineel en ongesneden blijft */
+    display: block;
+    object-fit: contain;
+}
+
+/* RUIMTE TUSSEN FOTO'S OP RECHTERPAGINA */
+.img-right-top {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.right-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.right-subcolumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* RUIMTE TUSSEN AFBEELDINGEN LINKERKANTS */
+.left-bottom-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Dit zorgt voor de ruimte tussen de twee foto's */
+}
+
+
+
+
+
+
+/* --- URBAN EDITORIAL OVERLAY COMPOSITIE --- */
+
+.urban-editorial-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: flex-end; /* Duwt de foto naar rechts */
+}
+
+/* De grote titel die links over de foto heen valt */
+.urban-editorial-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+    color: #000000;
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    z-index: 5; /* Zorgt dat de tekst BVENOP de foto zweeft */
+    pointer-events: none;
+    /* Subtiele witte 'halo' achter de zwarte letters zodat ze altijd leesbaar zijn over de foto */
+    text-shadow: 
+        2px 2px 0px #FFFFFF,
+       -2px -2px 0px #FFFFFF,
+        2px -2px 0px #FFFFFF,
+       -2px 2px 0px #FFFFFF,
+        0px 2px 0px #FFFFFF,
+        2px 0px 0px #FFFFFF;
+}
+
+/* De hero foto aan de rechterkant van het linkerblad */
+.urban-hero-box {
+    width: 70%; /* Houdt ruimte over aan de linkerkant voor de tekst */
+    margin-left: auto;
+}
+
+/* Accent op de rechterpagina */
+.urban-meta-accent {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.big-number {
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+}
+
+.accent-sub {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+/* AFDWINGEN DAT ALLE AFBEELDINGEN HUN ORIGINELE KLEUR BEHOUDEN */
+img, 
+.spread-img-box img, 
+.urban-hero-box img {
+    filter: none !important;
+    -webkit-filter: grayscale(0%) !important;
+    mix-blend-mode: normal !important;
+}
+
+/* --- CLEAN OVERRIDE VOOR AFBEELDINGEN & KLEUREN --- */
+img, 
+.spread-img-box img {
+    filter: none !important;
+    -webkit-filter: none !important;
+    mix-blend-mode: normal !important;
+}
+
+/* Zorgt dat de grote hero foto op de linkerpagina de ruimte mooi opvult */
+.left-bottom-grid .spread-img-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Zorg dat de video binnen de boksen blijft */
+.project-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Zorg dat archive-links er strak uitzien */
+.archive-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.archive-link:hover .archive-card-title {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   MULHOLLAND DRIVE CLEAN SPREAD
+   ========================================================= */
+
+.mulholland-clean-spread {
+    background-color: #ffffff; /* Strakke witte achtergrond */
+    padding: 0;
+    box-shadow: none;
+    flex-direction: column;
+}
+
+.mulholland-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.project-year {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mulholland-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.mulholland-hero-media {
+    width: 100%;
+}
+
+.video-click-wrapper {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+.mulholland-editorial-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Responsive voor mobiel */
+@media (max-width: 900px) {
+    .mulholland-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Vloeiend scrollen als je op de navigatieknop 'Contact' klikt */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================================
+   4. CONTACT — EDITORIAL POSTER DESIGN
+========================================= */
+
+.contact-section {
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background-color: #ffffff;
+    color: #000;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 25px 4%;
+    box-sizing: border-box;
+}
+
+/* TOP INFORMATION */
+
+.contact-top {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.contact-date,
+.contact-heading-small {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-heading-small {
+    text-align: center;
+}
+
+.contact-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.contact-nav a {
+    color: #060606;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.contact-nav a:hover {
+    opacity: 0.45;
+}
+
+/* HUGE CONTACT LETTERING */
+
+.contact-title-wrap {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.contact-graffiti {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: clamp(180px, 27vw, 490px);
+    font-weight: 700;
+
+    line-height: 0.8;
+    letter-spacing: -0.055em;
+
+    white-space: nowrap;
+    text-align: center;
+
+    color: #27ff00;
+
+    transform: rotate(-3deg) scaleY(1.15);
+    transform-origin: center;
+
+    margin: 0;
+    padding: 0;
+
+    user-select: none;
+}
+
+/* BOTTOM INFORMATION */
+
+.contact-bottom {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: end;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.contact-bottom span {
+    display: block;
+    font-size: 10px;
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
+.contact-bottom p {
+    margin: 0;
+}
+
+.contact-bottom a {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+}
+
+.contact-bottom a:hover {
+    text-decoration: underline;
+}
+
+.contact-bottom-center {
+    text-align: center;
+}
+
+.contact-bottom-right {
+    text-align: right;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .contact-section {
+        height: 100svh;
+        min-height: 650px;
+        padding: 20px 5%;
+    }
+
+    .contact-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        font-size: 9px;
+    }
+
+    .contact-heading-small {
+        display: none;
+    }
+
+    .contact-nav {
+        gap: 10px;
+        font-size: 8px;
+    }
+
+    .contact-graffiti {
+        font-size: 25vw;
+        transform: rotate(-3deg) scaleY(1.2);
+    }
+
+    .contact-bottom {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        font-size: 10px;
+    }
+
+    .contact-bottom-center {
+        text-align: right;
+    }
+
+    .contact-bottom-right {
+        grid-column: 1 / -1;
+        text-align: left;
+    }
+
+}
+
+/* =========================================
+   RMH PROJECT PAGE
+========================================= */
+
+.rmh-container {
+    width: 100%;
+    padding: 110px 4% 60px;
+    box-sizing: border-box;
+    background: #fff;
+    color: #000;
+}
+
+/* PROJECT HEADER */
+
+.rmh-header {
+    margin-bottom: 60px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 20px;
+}
+
+.rmh-header h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(40px, 6vw, 85px);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    margin: 0;
+}
+
+/* INTRO */
+
+.rmh-intro {
+    max-width: 650px;
+    margin-bottom: 80px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* IMAGE GALLERY */
+
+.rmh-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+.rmh-item {
+    width: 100%;
+}
+
+.rmh-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* IMAGE CAPTIONS */
+
+.rmh-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding-top: 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+.rmh-caption h3 {
+    font-size: 13px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.rmh-caption p {
+    max-width: 450px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* FOOTER */
+
+.rmh-footer {
+    margin-top: 100px;
+    padding-top: 15px;
+    border-top: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.rmh-footer a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .rmh-container {
+        padding-top: 90px;
+    }
+
+    .rmh-caption {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .rmh-item img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .rmh-gallery {
+        gap: 50px;
+    }
+
+    .rmh-footer {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+/* =========================================
+   SPREAD HORIZONTAL WEBDESIGN ITEMS
+========================================= */
+
+.right-spread-stack,
+.left-spread-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.spread-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+}
+
+.spread-img-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: #444444;
+    margin: 0;
+}
+
+.spread-img-desc strong {
+    color: #000000;
+    font-weight: 700;
+}

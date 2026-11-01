@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassir el Mahtouchi — Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@700;900&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigatie RECHTSBOVEN (blijft in beeld staan tijdens het scrollen) -->
+    <nav class="top-nav">
+        <a href="#home" class="nav-item">Home</a>
+        <a href="#work" class="nav-item">Work</a>
+        <a href="#about" class="nav-item">About ME</a>
+        <a href="#contact" class="nav-item">Contact</a>
+    </nav>
+
+    <!-- 1. HOME SECTIE -->
+    <section id="home" class="hero-container">
+        <div class="hero-bg">
+            <img src="images/main-hero-bw.jpg" alt="Hero background">
+        </div>
+
+        <div class="text-group">
+            <h1 class="graffiti-title">Yassir el Mahtouchi</h1>
+            <p class="sub-title">PHOTOGRAPHER, CREATIVE DIRECTOR, FILMMAKER</p>
+        </div>
+    </section>
+
+    <!-- 2. WORK SECTIE (Magazine / Editorial Grid) -->
+    <section id="work" class="work-section">
+        <div class="journal-container">
+            
+            <!-- Bovenkant: Grote koppen met strepen & categorieën -->
+            <header class="journal-header">
+                <div class="journal-title-stack">
+                    <h1>Home</h1>
+                    <h1><span class="dash">—</span> Work</h1>
+                    <h1><span class="dash">—</span> Archive</h1>
+                </div>
+                <div class="journal-categories">
+                    <span class="cat-active">Selected Projects</span>
+                    <span>Editorials</span>
+                    <span>Portraits</span>
+                    <span>Film</span>
+                </div>
+            </header>
+
+            <!-- Grid met projecten (4 kolommen layout) -->
+            <div class="journal-grid">
+                
+                <!-- Project 1 -->
+                <a href="project-metro.html" class="journal-card">
+                    <div class="card-img-wrap">
+                        <img src="images/wall crop.png" alt="Black And White Metro">
+                    </div>
+                    <h3 class="card-title">Black And White Metro. Visualising urban silence in raw contrast</h3>
+                    <p class="card-excerpt">Inspired by 90s editorials and the work of Corinne Day.
+
+This shoot explores... </p>
+                    <span class="card-meta">Editorial, 2026</span>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="project-urban.html" class="journal-card">
+                    <h3 class="card-title">Urban City: Exploring color & motion in urban structures</h3>
+                    <div class="card-img-wrap">
+                        <img src="images/tunnel lolly wall.png" alt="Urban City">
+                    </div>
+                    <p class="card-excerpt">Inspired by the 90s editorial work of Chi Modu and Jonathan  Mannion during the peak of the then emerging...</p>
+                    <span class="card-meta">Portraits, 2026</span>
+                </a>
+
+                <!-- Project 3: Mulholland Drive (Nu werkend en gelinkt!) -->
+                <a href="project-mulholland.html" class="journal-card">
+                    <div class="card-img-wrap aspect-portrait">
+                        <img src="images/Schermafbeelding 2026-09-17 231332.png" alt="Mulholland Drive">
+                    </div>
+                    <h3 class="card-title">Mulholland Drive: Reimagined Cinematic Storytelling</h3>
+                    <p class="card-excerpt">A real champion manages to anticipate the vision. It is someone who brings innovation to the screen...</p>
+                    <span class="card-meta">Film, 2026</span>
+                </a>
+
+                <!-- Project 4: Ripple Media House -->
+                <a href="RMH.html" class="journal-card">
+                    <h3 class="card-title">Experimental Web Design: Ripple Media House as a River Delta</h3>
+                    <div class="card-img-wrap">
+                        <img src="images/rmh-screen-1.png" alt="Experimental Web Design: Ripple Media House">
+                    </div>
+                    <p class="card-excerpt">Days of intensive experimentation, pushing the boundaries of traditional web design...</p>
+                    <span class="card-meta">Webdesign, 2026</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ABOUT ME SECTIE (50/50 Editorial Split) -->
+    <section id="about" class="about-section">
+        
+        <!-- Linker helft: Gifgroen blok met strakke typografie -->
+        <div class="about-left-block">
+            <div class="about-top-content">
+                <span class="about-date">ABOUT ME</span>
+                <h2 class="about-hero-title">
+                    Yassir el Mahtouchi: Visual artist & filmmaker.
+                </h2>
+            </div>
+
+            <div class="about-bottom-content">
+                <p class="about-body-text">
+                   Visual Director, Netherlands.
+
+Working across photography, set design, and campaign layout. Partnering with emerging designers, brands and young artists to turn creative concepts into striking visual stories.
+                </p>
+            </div>
+
+            <!-- Randje onderaan dat de 'fold' naar de volgende sectie laat zien -->
+            <div class="about-fold-peek">
+                <span>PROJECTS OVERVIEW</span>
+            </div>
+        </div>
+
+        <!-- Rechter helft: Wit vlak / Schermvullende afbeelding -->
+        <div class="about-right-block">
+            <div class="about-img-frame">
+                <img src="images/Image - 2026-11-01T134602.085.jpg" alt="Yassir el Mahtouchi">
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 4. CONTACT SECTIE -->
+<section id="contact" class="contact-section">
+
+    <!-- Kleine informatie bovenaan -->
+    <div class="contact-top">
+
+        <div class="contact-date">
+            <span>YASSIR EL MAHTOUCHI</span>
+            <span>VISUAL ARTIST & FILMMAKER</span>
+            <span>NETHERLANDS — 2026</span>
+        </div>
+
+        <div class="contact-heading-small">
+            <span>LET'S CREATE</span>
+            <span>SOMETHING TOGETHER.</span>
+        </div>
+
+        <div class="contact-nav">
+            <a href="#home"></a>
+            <a href="#work"></a>
+            <a href="#about"></a>
+            <a href="mailto:jouw@email.nl"></a>
+        </div>
+
+    </div>
+
+    <!-- Gigantische handgeschreven titel -->
+    <div class="contact-title-wrap">
+        <h1 class="contact-graffiti">CONTACT</h1>
+    </div>
+
+    <!-- Onderste informatie -->
+    <div class="contact-bottom">
+
+        <div class="contact-bottom-left">
+            <span>AVAILABLE FOR</span>
+            <p>
+                Creative collaborations<br>
+                Photography<br>
+                Art direction<br>
+                Film & visual projects
+            </p>
+        </div>
+
+        <div class="contact-bottom-center">
+    <span>GET IN TOUCH</span>
+    <a href="mailto:yassirelm965@gmail.com">
+        EMAIL ADDRESS ↗
+    </a>
+</div>
+<div class="contact-bottom-right">
+    <span>FOLLOW MY WORK</span>
+    <a href="https://www.instagram.com/yes_sir_elm/"
+       target="_blank"
+       rel="noopener noreferrer">
+        INSTAGRAM ↗
+    </a>
+</div>
+    </div>
+
+</section>
+
+</body>
+</html>
